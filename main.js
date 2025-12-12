@@ -187,8 +187,6 @@ function chackQuiz() {
         // q3 - מענה פתוח ללא ציון ממוחשב
     };
 
-    clearAllFeedback();
-    //Batch saves all the interactions for sanding (restart)
     interactionsBatch = [];
 
     // Q1: opinion — always accepted (neutral result)
@@ -294,17 +292,6 @@ function setFeedback(article, isCorrect, message, details, noPrefix = false) {
     // color the card border
     article.classList.add(isCorrect ? 'is-correct' : 'is-incorrect');
 }
-
-
-// Clear all feedback (used on reset or before re-check)
-function clearAllFeedback() {
-    form.querySelectorAll('article').forEach(a => {
-        a.classList.remove('is-correct', 'is-incorrect');
-        const fb = a.querySelector('.q-feedback');
-        if (fb) fb.remove();
-    });
-}
-
 // Validate required fields; if invalid, let browser show built-in bubbles
 function allRequiredAnswered() {
     if (form.checkValidity()) return true;
@@ -352,4 +339,5 @@ function showModal(id) {
     if (!el) return;
     const inst = bootstrap.Modal.getOrCreateInstance(el);
     inst.show();
+
 }
