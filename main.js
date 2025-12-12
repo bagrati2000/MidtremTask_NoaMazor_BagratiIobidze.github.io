@@ -63,10 +63,6 @@ function sendInteractionsBatchToLMS(interactions){
 }
 
 function finalizeAndCloseLMSConnection(){
-    if(isScormConnected){
-        setFinalizeDisabled(true);
-
-    }
 
     if (!Array.isArray(interactionsBatch) || interactionsBatch.length === 0) {
         console.warn('[Finalize] No interactions batch found. Run the check step first.');
@@ -159,7 +155,6 @@ function handleQuizSubmit(e) {
     // First: make sure everything required is answered
     if (!allRequiredAnswered()) return;
     // Disable the check button after successful check
-    setCheckDisabled(true);
     // Then chackQuiz, show feedback & collect interactions
     const interactions = chackQuiz();
     console.log(interactions);
@@ -177,7 +172,6 @@ function handleQuizSubmit(e) {
     finalizeAndCloseLMSConnection();
 }
 
-
 // chackQuiz per question
 function chackQuiz() {
     // Answer key
@@ -187,6 +181,7 @@ function chackQuiz() {
         // q3 - מענה פתוח ללא ציון ממוחשב
     };
 
+    //Batch saves all the interactions for sanding (restart)
     interactionsBatch = [];
 
     // Q1: opinion — always accepted (neutral result)
@@ -265,8 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //================Helpers=========================
 // Create/clear feedback block inside a question <article>
-function setFeedback(article, isCorrect, message, details, noPrefix = false) {
-    // wipe previous state
+function setFeedback(article, isCorrect, message, details) {
+
     article.classList.remove('is-correct', 'is-incorrect');
     const prev = article.querySelector('.q-feedback');
     if (prev) prev.remove();
@@ -278,20 +273,15 @@ function setFeedback(article, isCorrect, message, details, noPrefix = false) {
     wrap.setAttribute('aria-live', 'polite');
 
     const alert = document.createElement('div');
-    alert.className = 'alert ' + (isCorrect ? 'alert-success' : 'alert-danger') + ' mb-0';
-    const TEXT_OK = 'מעולה — תשובה נכונה.';
-    const TEXT_ERR = 'לא מדויק — ראו הסבר:';
+    alert.className = 'alert '+ (isCorrect ? 'alert-success' : 'alert-danger') +'mb-0';
 
-    // choose message format
-    const prefix = noPrefix ? '' : `<strong>${isCorrect ? TEXT_OK : TEXT_ERR}</strong> `;
-    alert.innerHTML = `${prefix}${message || ''}${details ? `<div class="mt-1 small text-muted">${details}</div>` : ''}`;
+    alert.innerHTML = `${message || ''} ${details ? `<div class="mt-1 small text-muted">${details}</div>` : ''}`;
 
     wrap.appendChild(alert);
     article.appendChild(wrap);
-
-    // color the card border
     article.classList.add(isCorrect ? 'is-correct' : 'is-incorrect');
 }
+
 // Validate required fields; if invalid, let browser show built-in bubbles
 function allRequiredAnswered() {
     if (form.checkValidity()) return true;
@@ -310,28 +300,6 @@ function getChosenRadioText(articleEl, name) {
     return label ? label.textContent.trim() : '';
 }
 
-
-// Enable/disable the final submission button
-function setFinalizeDisabled(isDisabled) {
-    const btn = document.getElementById('btn-finalize');
-    if (!btn) return;
-    if (isDisabled) {
-        btn.disabled = true;
-        btn.setAttribute('aria-disabled', 'true');
-    } else {
-        btn.disabled = false;
-        btn.removeAttribute('aria-disabled');
-    }
-}
-
-function setCheckDisabled(isDisabled) {
-    const btn = document.getElementById('btn-check');
-    if (!btn) return;
-    btn.disabled = !!isDisabled;
-    if (isDisabled) btn.setAttribute('aria-disabled', 'true');
-    else btn.removeAttribute('aria-disabled');
-}
-
 // Modal helpers 
 function showModal(id) {
     if (!window.bootstrap) return;
@@ -339,5 +307,4 @@ function showModal(id) {
     if (!el) return;
     const inst = bootstrap.Modal.getOrCreateInstance(el);
     inst.show();
-
 }
