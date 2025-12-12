@@ -1,0 +1,431 @@
+:root {
+  --clr-main: #e56129;
+  --clr-main-hover: #b3b7f6;
+  --clr-correct: #94d5a0;
+  --clr-correct-hover: #b7e3bf;
+  --clr-incorrect: #f9bbb9;
+  --clr-incorrect-hover: #f39895;
+  --clr-disabled: #d8d7d7;
+  --clr-text: #000000;
+  --clr-bg-1: #fffdfe;
+  --clr-bg-2: #ecf0f7;
+  --clr-white: #ffffff;
+
+
+  --font-family-base: "Rubik", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-black: 900;
+}
+
+/* =========================================
+   General
+   ========================================= */
+
+body {
+  color: var(--clr-text);
+  background: var(--clr-bg-1);
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-regular);
+  font-optical-sizing: auto;
+  font-style: normal
+}
+
+/* Headings */
+h1,
+.h1 {
+  font-weight: var(--font-weight-black);
+}
+
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Alternate section backgrounds to improve visual rhythm */
+section:nth-of-type(even) {
+  background: var(--clr-bg-2);
+}
+
+/* Primary brand utilities mapped onto Bootstrap semantics */
+.bg-brand {
+  background-color: var(--clr-main) !important;
+  color: var(--clr-white) !important;
+  /* text on main = white */
+}
+
+.text-on-brand {
+  color: var(--clr-white) !important;
+}
+
+/* Links and focus states with accessible outlines */
+a {
+  color: var(--clr-main);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--clr-text);
+  background: var(--clr-main-hover);
+  outline: 2px solid var(--clr-main);
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+/* Button theming (keep Bootstrap structure; adjust minimal tokens) */
+.btn-brand {
+  background-color: var(--clr-main);
+  color: var(--clr-white);
+  border: 1px solid var(--clr-main);
+}
+
+.btn-brand:hover,
+.btn-brand:focus-visible {
+  background-color: var(--clr-main-hover);
+  color: var(--clr-text);
+  border-color: var(--clr-main);
+}
+
+.btn-outline-brand {
+  background-color: transparent;
+  color: var(--clr-main);
+  border: 1px solid var(--clr-main);
+}
+
+.btn-outline-brand:hover,
+.btn-outline-brand:focus-visible {
+  background-color: var(--clr-main-hover);
+  color: var(--clr-text);
+  border-color: var(--clr-main);
+}
+
+.btn-disabled {
+  background-color: var(--clr-disabled) !important;
+  border-color: var(--clr-disabled) !important;
+  color: var(--clr-text) !important;
+  cursor: not-allowed !important;
+  opacity: 1 !important;
+  /* keep contrast */
+}
+
+/* Status badges (static, no JS logic) */
+.badge-correct {
+  background-color: var(--clr-correct);
+  color: var(--clr-text);
+}
+
+.badge-incorrect {
+  background-color: var(--clr-incorrect);
+  color: var(--clr-text);
+}
+
+.badge-neutral {
+  background-color: var(--clr-disabled);
+  color: var(--clr-text);
+}
+
+
+/* Card minimal refinements—use Bootstrap spacing */
+.tech-card .card-header {
+  background-color: transparent;
+  border-bottom: none;
+}
+
+/* =========================================
+   Specific
+   ========================================= */
+
+/* intro */
+#intro img {
+  max-height: 320px;     
+  width: 100%;
+  height: auto;        
+  object-fit: contain;   
+}
+
+@media (max-width: 767.98px) {
+  #intro img {
+    max-height: 220px;
+  }
+}
+
+
+/* Accordion */
+
+.accordion-item {
+  border: 2px solid var(--clr-main);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(41, 62, 229, 0.15); /* subtle blue shadow for prominence */
+  background-color: var(--clr-white);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accordion-item:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Slight elevation on hover/focus to draw attention */
+.accordion-item:hover,
+.accordion-item:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(41, 62, 229, 0.25);
+}
+
+/* Accordion header (button) styling */
+.accordion-button {
+  background-color: var(--clr-bg-2);
+  color: var(--clr-text);
+  text-align: right;
+  font-weight: var(--font-weight-semibold);
+  padding: 1rem 1.25rem;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--clr-white);
+  background-color: var(--clr-main);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure arrow (Bootstrap default icon) fits RTL direction */
+.accordion-button::after {
+  margin-left: 0;
+  margin-right: auto; /* place arrow on left side for RTL */
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+/* Accordion body readability */
+.accordion-body {
+  background-color: var(--clr-white);
+  color: var(--clr-text);
+  line-height: 1.6;
+}
+
+/* =========================================
+   Quiz validation & feedback visuals
+   ========================================= */
+
+/* Color the question card border based on result */
+#quiz article.is-correct { border-color: var(--clr-correct) !important; }
+#quiz article.is-incorrect { border-color: var(--clr-incorrect) !important; }
+
+/* Space for feedback block */
+#quiz .q-feedback { margin-top: .75rem; }
+
+/* Optional: subtle left border for feedback readability */
+#quiz .q-feedback .alert { border-right: 4px solid rgba(0,0,0,.08); }
+
+
+/* =========================================
+   Anchor scroll offset for sticky header
+   ========================================= */
+
+section {
+  scroll-margin-top: 6rem; 
+}
+
+@media (max-width: 767.98px) {
+  section {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* =========================================
+   Acssibility
+   ========================================= */
+
+   /* Skip-link accessibility */
+.skip-link {
+  position: absolute;
+  top: -1000px;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--clr-main);
+  color: var(--clr-white);
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid var(--clr-main-hover);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link {
+    transition: background-color .2s ease, color .2s ease;
+  }
+}
+/* Hero Image */
+.hero-section {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-section img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;   /* התנהגות נכונה למסכים רחבים */
+    max-height: 380px;   /* גובה מומלץ – אפשר לשנות ל-420px */
+}
+/* =========================
+   Search bar under hero
+   ========================= */
+
+.search-section {
+    background-color: var(--clr-bg-1);
+    border-bottom: 2px solid #f2f2f2;
+}
+
+/* כפתור החיפוש – עגול וגדול באמצע */
+.btn-search {
+    background-color: #e8752c;       /* אפשר להחליף לצבע המיתוגי שלך */
+    border-color: #e8752c;
+    color: #ffffff;
+    border-radius: 999px;
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.15rem;
+    padding: 0.6rem 2.5rem;
+}
+
+.btn-search:hover,
+.btn-search:focus-visible {
+    background-color: #ff944d;
+    border-color: #ff944d;
+    color: #ffffff;
+}
+
+/* שדה החיפוש – קופסה עגולה כמו באפיון */
+.search-input {
+    border-radius: 999px;
+    border: 2px solid #e8752c;
+    padding-inline: 1.25rem;
+    font-size: 1rem;
+}
+
+/* במובייל – רווח קטן מעל ומתחת */
+@media (max-width: 767.98px) {
+    .search-section {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+}
+/* =========================
+   Units cards grid
+   ========================= */
+
+.portal-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.portal-card .card-img-top {
+    height: 160px;
+    object-fit: cover;
+}
+
+.portal-card .card-body {
+    padding: 1rem 1.25rem;
+}
+
+/* הובר קטן לכרטיס */
+.portal-card:hover,
+.portal-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+/* =========================
+   Contact form section
+   ========================= */
+
+.contact-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* קופסאות הטופס – דומות לשאלון הקיים */
+.contact-box {
+    border-width: 2px;
+    border-color: #ef7c34; /* כחול כהה כמו בתמונה; אפשר לשנות ל-var(--clr-main) אם רוצים כתום */
+}
+/* =========================
+   Footer
+   ========================= */
+
+footer {
+    background-color: var(--clr-main); /* כתום */
+    color: var(--clr-white);           /* טקסט לבן */
+    border-top: none;                  /* אם לא רוצים את הקו האפור של Bootstrap */
+}
+
+/* קישורים בתוך הפוטר – גם לבנים */
+footer a {
+    color: var(--clr-white);
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--clr-white);
+    text-decoration: underline;
+    background: transparent; /* בלי רקע מוזר בהובר */
+}
+/* כפתור המבורגר – ריבוע קטן */
+#nav-toggle {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+/* Offcanvas – פאנל צר בצד ימין, כתום */
+.offcanvas-end {
+    max-width: 260px;        /* רוחב כמו בתמונה */
+}
+
+.offcanvas.bg-brand {
+    background-color: var(--clr-main);
+    color: var(--clr-white);
+}
+
+/* קישורים בתוך התפריט הנייד */
+.offcanvas .nav-link {
+    color: var(--clr-white);
+    text-decoration: none;
+    padding: .4rem 0;
+}
+
+.offcanvas .nav-link:hover,
+.offcanvas .nav-link:focus {
+    text-decoration: underline;
+    background: transparent;
+}
+/* גודל האייקון של ההמבורגר */
+#nav-toggle img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* גודל אייקון ה-X בתפריט */
+.icon-close {
+    width: 24px;
+    height: 24px;
+    display: block;
+}

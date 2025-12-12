@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>כותר ראשון פורטל עובדים</title>
+
+  <!-- Bootstrap RTL  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-DOXMLfHhQkvFFp+rWTZwVlPVqdIhpDVYT9csOnHSgWQWPX0v5MCGtjCJbY6ERspU" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Skip to main content for keyboard/screen-reader users -->
+  <a class="skip-link" href="#main-content">דלגי לתוכן המרכזי</a>
+
+  <!-- Header / Masthead -->
+  <header class="sticky-top bg-brand py-4 border-bottom border-2 shadow-sm">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-between gap-3">
+            <!-- צד ימין: כפתור + כותרת -->
+            <div class="d-flex align-items-center gap-2">
+                <!-- כפתור תפריט למובייל -->
+                <button class="border-0 bg-transparent p-0 d-lg-none"
+                        id="nav-toggle"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#mainNavOffcanvas"
+                        aria-controls="mainNavOffcanvas"
+                        aria-expanded="false"
+                        aria-label="פתיחת תפריט">
+                    <img src="assets/hamburger.png" alt="פתיחת תפריט">
+                </button>
+
+
+                <h1 class="h2 mb-0 text-on-brand">כותר ראשון פורטל עובדים</h1>
+            </div>
+
+            <!-- תפריט רגיל – רק בדסקטופ -->
+            <nav class="d-none d-lg-block" aria-label="ניווט ראשי">
+                <ul class="nav nav-pills gap-2">
+                    <li class="nav-item"><a class="nav-link text-on-brand" href="#hero">ראשי</a></li>
+                    <li class="nav-item"><a class="nav-link text-on-brand" href="#about">על הפורטל</a></li>
+                    <li class="nav-item"><a class="nav-link text-on-brand" href="#units">יחידות לימוד</a></li>
+                    <li class="nav-item"><a class="nav-link text-on-brand" href="#search">חיפוש תכנים</a></li>
+                    <li class="nav-item"><a class="nav-link text-on-brand" href="#contact">משוב עובד</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+  </header>
+  <!-- Offcanvas תפריט נייד -->
+  <div class="offcanvas offcanvas-end bg-brand text-on-brand"
+       tabindex="-1"
+       id="mainNavOffcanvas"
+       aria-labelledby="mainNavOffcanvasLabel">
+
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="mainNavOffcanvasLabel">תפריט</h5>
+          <button type="button"
+                  class="border-0 bg-transparent p-0"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="סגירת תפריט">
+              <img src="assets/x.jpeg" alt="" class="icon-close">
+          </button>
+      </div>
+
+      <div class="offcanvas-body">
+          <ul class="nav flex-column text-end">
+              <li class="nav-item mb-2"><a class="nav-link text-on-brand" href="#hero" data-bs-dismiss="offcanvas">ראשי</a></li>
+              <li class="nav-item mb-2"><a class="nav-link text-on-brand" href="#about" data-bs-dismiss="offcanvas">על הפורטל</a></li>
+              <li class="nav-item mb-2"><a class="nav-link text-on-brand" href="#units" data-bs-dismiss="offcanvas">יחידות לימוד</a></li>
+              <li class="nav-item mb-2"><a class="nav-link text-on-brand" href="#search" data-bs-dismiss="offcanvas">חיפוש תכנים</a></li>
+              <li class="nav-item mb-2"><a class="nav-link text-on-brand" href="#contact" data-bs-dismiss="offcanvas">משוב עובד</a></li>
+          </ul>
+      </div>
+  </div>
+
+
+  <!-- Main -->
+  <main id="main-content">
+    <!-- Intro Section -->
+      <!-- Hero image תחת התפריט -->
+      <section id="hero" class="hero-section">
+          <img src="assets/front-view-books-desk.jpg"
+               class="img-fluid w-100 hero-img"
+               alt="ספרים מונחים על שולחן"
+               loading="lazy">
+      </section>
+
+      <!-- Search bar -->
+      <section id="search" class="search-section py-4">
+          <div class="container">
+              <div class="row justify-content-center g-3 align-items-center">
+
+                  <!-- כפתור חיפוש -->
+                  <div class="col-auto">
+                      <button id="search-button" class="btn btn-search px-5">חיפוש</button>
+                  </div>
+                  <!-- שדה חיפוש -->
+                  <div class="col-12 col-md-6 col-lg-5">
+                      <label for="search-input" class="visually-hidden">שדה חיפוש יחידות ותכנים בפורטל</label>
+                      <input type="search" id="search-input" class="form-control search-input" placeholder="מה תרצו לחפש בפורטל העובדים?">
+                  </div>
+
+              </div>
+          </div>
+      </section>
+      <!-- Cards Section: 7 יחידות לימוד / תכנים -->
+      <section id="units" class="py-5">
+          <div class="container">
+              <header class="mb-4 text-center">
+                  <h2 class="h3 mb-1">יחידות ותכנים בפורטל</h2>
+                  <p class="mb-0 small text-muted">
+                      בחרו יחידה לפתיחה מהכרטיסים הבאים
+                  </p>
+              </header>
+
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+                  <!-- Card 1 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/IMAGE1.jpg" class="card-img-top" alt="יחידת למידה: היכרות עם הפורטל">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 1 נהלי עבודה ברשת</h5>
+                              <p class="card-text">
+                                  כללי עבודה, הנחיות בטיחות, כללי התנהלות מול צוותים ולקוחות.
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/IMAGE2.jpg" class="card-img-top" alt="יחידת למידה: נהלים ועדכונים">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 2  מערך ניהול זכויות עובדים</h5>
+                              <p class="card-text">
+                                  מידע על זכויות עובדים, עידכון זכויות, תוספות שכר ותנאים.
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 3 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/INAGE3.jpg" class="card-img-top" alt="יחידת למידה: קורסים מקוונים">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 3 ניהול שינוי ותהליכי העברת כותרים</h5>
+                              <p class="card-text">
+                                  תהליך העברת תפקידים, שינוי מבנה, שינויי הרשאות ומעבר בין סניפים.
+
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 4 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/IMAGE4.jpg" class="card-img-top" alt="יחידת למידה: הדרכות פרונטליות">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 4 נהלים ותקנות של הרשת (כולל ספרי נהלים)</h5>
+                              <p class="card-text">
+                                  מאגר הנהלים הרשמי פתיחת משמרת, סגירה, שירות, פרוצדורות חובה.
+
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 5 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/IMAGE5.jpg" class="card-img-top" alt="יחידת למידה: כלים דיגיטליים">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 5 מנהלים חדשים: מדריך הניהול
+                              </h5>
+                              <p class="card-text">
+                                  כלים פרקטיים למנהלים חדשים משימות פתיחה, סגירה, ניהול צוות ודיווח אירועים.
+
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 6 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/IMAGE6.jpg" class="card-img-top" alt="יחידת למידה: רווחה וקהילה">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">
+                                  יחידה 6 פורטל משימות ודיווחי עובדים
+                              </h5>
+                              <p class="card-text">
+                                  איך מגישים דו"חות איך מדווחים אירועים איך עוקבים אחרי משימות.
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Card 7 -->
+                  <div class="col">
+                      <div class="card h-100 shadow-sm portal-card">
+                          <img src="assets/PHOTO7.jpg" class="card-img-top" alt="יחידת למידה: שאלות נפוצות ותמיכה">
+                          <div class="card-body d-flex flex-column">
+                              <h5 class="card-title">יחידה 7 זכויות ממשק – ניהול הרשאות משתמשים </h5>
+                              <p class="card-text">
+                                  הסבר על סוגי משתמשים ברשת, הרשאות, ומה כל עובד יכול לבצע בפורטל החדש.
+                              </p>
+                              <a href="#" class="btn btn-brand mt-auto">כניסה ליחידה</a>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </section>
+
+      <!-- Contact / טופס פניות עובדים -->
+      <section id="contact" class="py-5">
+          <div class="container">
+              <div class="row g-4 align-items-stretch">
+
+                  <!-- תמונת ספרים (שמאל בדסקטופ, למעלה במובייל) -->
+                  <div class="col-12 col-lg-5 order-lg-2">
+                  <figure class="h-100 d-flex align-items-center">
+                          <img src="assets/pexels-pixabay-159711.jpg"
+                               class="img-fluid contact-img"
+                               alt="מדפי ספרים בספרייה"
+                               loading="lazy">
+                      </figure>
+                  </div>
+
+                  <!-- טופס פניות -->
+                  <div class="col-12 col-lg-7 order-lg-1">
+                  <header class="mb-3 text-lg-start text-center">
+                          <h2 class="h3 mb-1">טופס פניות עובדים</h2>
+                          <p class="small text-danger mb-0">* כל השדות חובה</p>
+                      </header>
+
+                      <form id="quiz-form">
+                          <!-- קופסה 1: נושא הפנייה -->
+                          <article class="p-3 border rounded-3 bg-white mb-3 contact-box">
+                              <h3 class="h6 mb-2" id="q1-title">1. נושא הפנייה:</h3>
+                              <fieldset aria-labelledby="q1-title">
+                                  <legend class="visually-hidden">בחר/י נושא פנייה</legend>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q1" id="q1a" value="A" required>
+                                      <label class="form-check-label" for="q1a">נהלי עבודה</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q1" id="q1b" value="B">
+                                      <label class="form-check-label" for="q1b">זכויות עובדים</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q1" id="q1c" value="C">
+                                      <label class="form-check-label" for="q1c">מערכת הפורטל</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q1" id="q1d" value="D">
+                                      <label class="form-check-label" for="q1d">בעיות גישה / הרשאות</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q1" id="q1e" value="E">
+                                      <label class="form-check-label" for="q1e">משימות ודיווחים</label>
+                                  </div>
+                              </fieldset>
+                          </article>
+
+                          <!-- קופסה 2: תיאור הפנייה -->
+                          <article class="p-3 border rounded-3 bg-white mb-3 contact-box" dir="rtl" lang="he">
+                              <h3 class="h6 mb-2" id="q2-title">2. תיאור הפנייה</h3>
+                              <label class="form-label" for="q2input">
+                                  תאר/י בקצרה את הבעיה או הבקשה שלך:
+                              </label>
+                              <textarea id="q2input" name="q2" class="form-control" aria-describedby="q2-hint q2-count q2-error" rows="6" required aria-required="true" placeholder="לדוגמה: בקשה לעדכון פרטי עובד, דיווח על תקלה בפורטל או שאלה לגבי הזכויות שלי." minlength="0" maxlength="1000"></textarea>
+                          </article>
+
+                          <!-- קופסה 3: רמת דחיפות -->
+                          <article class="p-3 border rounded-3 bg-white mb-3 contact-box">
+                              <h3 class="h6 mb-2" id="q3-title">3. רמת דחיפות הפנייה (חובה):</h3>
+                              <fieldset aria-labelledby="q3-title">
+                                  <legend class="visually-hidden">בחר/י רמת דחיפות</legend>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q3" id="q3a" value="A" required>
+                                      <label class="form-check-label" for="q3a">נמוכה</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q3" id="q3b" value="B">
+                                      <label class="form-check-label" for="q3b">בינונית</label>
+                                  </div>
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="q3" id="q3c" value="C">
+                                      <label class="form-check-label" for="q3c">גבוהה</label>
+                                  </div>
+                              </fieldset>
+                          </article>
+
+                          <button type="submit" class="btn btn-brand px-4">
+                              הגשת טופס פניות
+                          </button>
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-top">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-2">
+        <p class="mb-0">נוצר בשנת 2025 על ידי בגרטי ונועה</p>
+        <nav aria-label="ניווט תחתון">
+          <ul class="nav">
+            <li class="nav-item"><a class="nav-link px-2" href="#hero">לראש העמוד</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+  <!-- SCORM wrapper -->
+  <script src="SCORM_API_wrapper.js"></script>
+
+  <!-- main JS -->
+  <script src="main.js"></script>
+
+
+  <!-- Submit Modal (single modal, two states: loading / success) -->
+  <div class="modal fade" id="modal-submit" tabindex="-1" aria-labelledby="modalSubmitLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+
+        <!-- State: Loading -->
+        <div id="state-loading" class="p-5">
+          <div class="spinner-border mb-3" role="status" aria-hidden="true"></div>
+          <p id="modalSubmitLabel" class="mb-0">שולחים נתונים ל־LMS…</p>
+        </div>
+
+        <!-- State: Success (hidden initially) -->
+        <div id="state-success" class="d-none">
+          <div class="modal-header">
+            <h5 class="modal-title">ההגשה נקלטה</h5>
+            <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            הנתונים נשלחו בהצלחה. ניתן לסגור את החלון ולחזור לאתר הקורס.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-brand" data-bs-dismiss="modal">סגירה</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
